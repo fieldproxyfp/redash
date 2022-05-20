@@ -96,8 +96,8 @@ RUN python get-pip.py
 #COPY requirements_all_ds.txt ./
 #RUN if [ "x$skip_ds_deps" = "x" ] ; then pip install -r requirements_all_ds.txt ; else echo "Skipping pip install -r requirements_all_ds.txt" ; fi
 
-#COPY requirements_bundles.txt requirements_dev.txt ./
-#RUN if [ "x$skip_dev_deps" = "x" ] ; then pip install -r requirements_dev.txt ; fi
+COPY requirements_bundles.txt requirements_dev.txt ./
+RUN if [ "x$skip_dev_deps" = "x" ] ; then pip install -r requirements_dev.txt ; fi
 
 COPY requirements.txt ./
 RUN pip install -r requirements.txt
